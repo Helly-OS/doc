@@ -1,0 +1,40 @@
+Monolithic kernels:
+------------------
+In a monolithic kernel, all OS services run along with the main kernel thread, thus also residing in the same memory area. 
+This approach provides rich and powerful hardware access. The main disadvantages of monolithic kernels are the dependencies 
+between system components --- a bug in a device driver might crash the entire system --- and the fact that large kernels can 
+become very difficult to maintain.
+
+Unix and Linux have this kernel kind
+
+
+Microkernels:
+-----------------
+Microkernel (also abbreviated μK or uK) is the term describing an approach to operating system design by which the 
+functionality of the system is moved out of the traditional "kernel", into a set of "servers" that communicate through a 
+"minimal" kernel, leaving as little as possible in "system space" and as much as possible in "user space". A microkernel that 
+is designed for a specific platform or device is only ever going to have what it needs to operate. The microkernel approach 
+consists of defining a simple abstraction over the hardware, with a set of primitives or system calls to implement minimal OS 
+services such as memory management, multitasking, and inter-process communication. Other services, including those normally 
+provided by the kernel, such as networking, are implemented in user-space programs, referred to as servers. Microkernels are 
+easier to maintain than monolithic kernels, but the large number of system calls and context switches might slow down the 
+system because they typically generate more overhead than plain function calls.
+
+AIX, Minix and MacOSX have this kernel kind
+
+
+Hybrid kernels
+-----------------
+Hybrid kernels are used in most commercial operating systems such as Microsoft Windows NT 3.1, NT 3.5, NT 3.51, NT 4.0, 2000, 
+XP, Vista, 7, 8, 8.1 and 10. Apple Inc's own macOS uses a hybrid kernel called XNU which is based upon code from 
+Carnegie Mellon's Mach kernel and FreeBSD's monolithic kernel. They are similar to micro kernels, except they include some 
+additional code in kernel-space to increase performance.
+
+
+Nonokernels
+------------------
+A nanokernel delegates virtually all services --- including even the most basic ones like interrupt controllers or the timer --- 
+to device drivers to make the kernel memory requirement even smaller than a traditional microkernel.[39]
+
+
+For better statbility and performance, Hellyus will be use a Microkernel
